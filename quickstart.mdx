@@ -1,97 +1,67 @@
 ---
-title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+title: "Quickstart"
+description: "Start using BrowserTools MCP"
 ---
 
-## Setup your development
+If you have not already configured BrowserToolsMCP, make sure to visit the [installation](/installation) page to get everything set up!
 
-Learn how to update your docs locally and deploy them to the public.
+With BrowsersToolsMCP now installed and configured with your MCP client, you can enable your favorite AI code editors and agents to have access to the following capabilities:
 
-### Edit and preview
+---
 
-<AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 
-    1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `docs.json` is): ``` mintlify dev ```
-    <Note>
-      If you’re currently using the legacy ```mint.json``` configuration file, please update the Mintlify CLI:
+## Analyzing Logs for Debugging & Validation
 
+- **Get Console Logs:** Returns the most recent console logs
+- **Get Console Errors:** Returns the most recent console errors
+- **Get XHR Network Logs:** Returns all of the most recent xhr requests that results in an HTTP success response code like 200 or 300
+- **Get XHR Network Errors:** Returns the most recent xhr requests that returned a 400 or 500 HTTP error response code
 
-      ```npm i -g mintlify@latest```
-      And run the new upgrade command in your docs repository:
+  {" "}
 
-      ```mintlify upgrade```
-      You should now be using the new ```docs.json``` configuration file. Feel free to delete the ```mint.json``` file from your repository.
-    </Note>
-  </Accordion>
-</AccordionGroup>
+  <Tip>"Can you check console and network logs to see what went wrong?"</Tip>
+  Cursor agent will automatically use all four tools if you ask this when debugging.
 
-### Deploy your changes
+- **Wipe Logs:** Deletes all logs stored on the server
 
-<AccordionGroup>
+  <Tip>"Wipe the logs"</Tip>
+  Cursor agent will delete all logs stored in the server so that you have a fresh
+  slate for debugging. Useful if you don't want to refresh to browser to wipe reset/wipe
+  your logs.
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
+---
 
-</AccordionGroup>
+## Updating & Debugging UI Components
 
-## Update your docs
+- **Capture Screenshot:** Sends a screenshot to `/user/Downloads/mcp-screenshots`
+  {" "}
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+  <Tip>
+    "Something doesn't look right in the UI. Can you take a screenshot?"
+  </Tip>
 
-<CardGroup>
+  We suggest setting a custom path in the dev tools panel so screenshots are sent directly to AI code editors workspace / current project.
 
-<Card title="Add Content With MDX" icon="file" href="/essentials/markdown">
-  Add content to your docs with MDX syntax.
-</Card>
+  Then you can easily drag n' drop screenshots into your AI chat interface.
 
-<Card
-  title="Add Code Blocks"
-  icon="square-code"
-  href="/essentials/code"
->
-  Add code directly to your docs with syntax highlighting.
-</Card>
+- **Get currently selected element:** Returns the currently selected element.
 
-<Card
-  title="Add Images"
-  icon="image"
-  href="/essentials/images"
->
-  Add images to your docs to make them more engaging.
-</Card>
+  <Tip>"Can you edit the currently selected element to do x, y and z?"</Tip>
 
-<Card
-  title="Add Custom Components"
-  icon="puzzle-piece"
-  href="/essentials/reusable-snippets"
->
-  Add templates to your docs to make them more reusable.
-</Card>
+  When using the chrome dev tools you can use the Element Selector tool to select any component in your UI.
 
-</CardGroup>
+  After selecting an element, you'll be be able to ask Cursor to edit or find the currently selected element in your code. This makes traversing through a codebase and making UI changes much easier.
+
+---
+
+## Requirements
+
+- NodeJS installed on your machine
+- Google Chrome or a Chromium-based Browser
+- MCP Client Application (Cursor, Cline, Continue, Zed, Claude Desktop)
+- [BrowserToolsMCP Chrome Extension, Server & MCP Client Setup](/installation)
+
+<Info>
+  **Note**: Model Context Protocol (MCP) is specific to Anthropic models. When
+  using an editor like Cursor, make sure to enable composer agent with Claude
+  3.5 Sonnet selected as the model.
+</Info>

@@ -1,0 +1,142 @@
+---
+title: "Contributing"
+description: "Architecture overview and contribution guide"
+---
+
+## Architecture
+
+There are three core components all used to capture and analyze browser data:
+
+1. **Chrome Extension**: A browser extension that captures screenshots, console logs, network activity and DOM elements.
+2. **Node Server**: An intermediary server that facilitates communication between the Chrome extension and any instance of an MCP server.
+3. **MCP Server**: A Model Context Protocol server that provides standardized tools for AI clients to interact with the browser.
+
+<Frame>
+  <img
+    className="block"
+    src="/images/browserkit-system.png"
+    alt="BrowserKit System Design"
+    style={{ borderRadius: "0.5rem" }}
+  />
+</Frame>
+Model Context Protocol (MCP) is a capability supported by Anthropic AI models that
+allow you to create custom tools for any compatible client. MCP clients like Claude
+Desktop, Cursor, Cline or Zed can run an MCP server which "teaches" these clients
+about a new tool that they can use.
+
+These tools can call out to external APIs but in our case, **all logs are stored locally** on your machine and NEVER sent out to any third-party service or API. BrowserKit MCP runs a local instance of a NodeJS API server which communicates with the BrowserKit Chrome Extension.
+
+All consumers of the BrowserKit MCP Server interface with the same NodeJS API and Chrome extension.
+
+#### Chrome Extension
+
+- Monitors XHR requests/responses and console logs
+- Tracks selected DOM elements
+- Sends all logs and current element to the BrowserKit Connector
+- Connects to Websocket server to capture/send screenshots
+- Allows user to configure token/truncation limits + screenshot folder path
+
+#### Node Server
+
+- Acts as middleware between the Chrome extension and MCP server
+- Receives logs and currently selected element from Chrome extension
+- Processes requests from MCP server to capture logs, screenshot or current element
+- Sends Websocket command to the Chrome extension for capturing a screenshot
+- Intelligently truncates strings and # of duplicate objects in logs to avoid token limits
+- Removes cookies and sensitive headers to avoid sending to LLMs in MCP clients
+
+#### MCP Server
+
+- Implements the Model Context Protocol
+- Provides standardized tools for AI clients
+- Compatible with various MCP clients (Cursor, Cline, Zed, Claude Desktop, etc.)
+
+---
+
+## Future Enhancements
+
+If you're willing to take a stab at these ideas, go for it! Would appreciate any and all help 🙏
+
+- Add unit tests
+
+- Integrate Stagehands for natural language dom traversal
+
+- Integrate BrowserUse for automated feature testing
+
+---
+
+## Contributing to BrowserTools MCP
+
+Thank you for your interest in contributing to BrowserToolsMCP! We welcome contributions from the community and appreciate your help in making this project better.
+
+### How to Contribute
+
+There are many ways to contribute:
+
+- **Bug Reports:** Help us improve the project by reporting issues or bugs.
+- **Feature Requests:** Suggest new features or improvements.
+- **Code Contributions:** Submit bug fixes, enhancements, or new features via pull requests.
+- **Documentation:** Improve the documentation or add new guides.
+- **Testing:** Help test new releases and report issues.
+
+### Getting Started
+
+1. **Fork the Repository:** Click the **Fork** button on the top right of the repository page.
+2. **Clone Your Fork**
+
+3. **Create a Branch:**  
+   Create a new branch for your work. Use a descriptive name:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. **Make Your Changes:**  
+   Write your code or documentation changes.
+5. **Commit Your Changes:**  
+   Write clear commit messages. If your change fixes an issue, include the issue number (e.g., `Fixes #42`):
+   ```bash
+   git commit -m "Add feature to improve user login (Fixes #42)"
+   ```
+6. **Push to Your Fork:**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+7. **Open a Pull Request:**  
+   Navigate to the original repository and click on **New Pull Request**. Fill in the template provided and describe your changes.
+
+---
+
+### Reporting Issues
+
+Before reporting a new issue, please check the [issue tracker](https://github.com/AgentDeskAI/browser-tools-mcp/issues) to see if it has already been reported.
+
+When reporting a bug or suggesting a feature, please include:
+
+- A clear description of the issue.
+- Steps to reproduce (for bugs).
+- Expected and actual behavior.
+- Screenshots, logs, or any other details that can help us understand the problem.
+
+---
+
+### Coding Guidelines
+
+- Write clear and descriptive commit messages.
+- Ensure your code is well-commented and follows best practices.
+- Include tests for your code changes where applicable.
+
+---
+
+### Documentation
+
+- Update the documentation with your changes if necessary.
+- Ensure that new features and improvements are reflected in the README or separate documentation files.
+- Consider adding examples or code snippets to help users understand how to use new features.
+
+---
+
+### Getting Help
+
+If you have any questions or need assistance:
+
+- Open an issue on GitHub.
+- Read out to [@tedx_ai](https://x.com/tedx_ai) (DMs should be open)
