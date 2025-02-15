@@ -22,6 +22,18 @@ That way, you can simply tell Cursor or any AI code editor with MCP integrations
 
 <Tip>"Can you edit the currently selected element to do x, y and z?"</Tip>
 
+<Frame>
+  <iframe
+    src="https://www.loom.com/embed/88f493eb9c114d3b901ea97e9251e5e6?sid=bc48f6a5-991d-40c6-bc4e-84e3a964a418"
+    width="560"
+    height="315"
+    title="BrowserTool Tutorial"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    style={{ width: "100%", borderRadius: "0.5rem" }}
+  ></iframe>
+</Frame>
 ---
 
 ## Requirements
@@ -39,6 +51,19 @@ That way, you can simply tell Cursor or any AI code editor with MCP integrations
 ---
 
 ## Installation
+
+<Frame>
+  <iframe
+    src="https://www.loom.com/embed/88f493eb9c114d3b901ea97e9251e5e6?sid=b7fced1d-bbed-4e88-8de1-a2354b4f0d01"
+    width="560"
+    height="315"
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    style={{ width: "100%", borderRadius: "0.5rem" }}
+  ></iframe>
+</Frame>
 
 1.  **Download the Chrome Extension**: The official chrome extension is pending approval on the Google extension marketplace. For now, you can [click here to download the extension](https://github.com/AgentDeskAI/browser-tools-mcp/releases/download/v1.0.0/browsertools-mcp-chrome-extension.zip) or clone the repo below and find the extension within the chrome-extension directory:
 
@@ -144,7 +169,7 @@ That way, you can simply tell Cursor or any AI code editor with MCP integrations
     command to:
 
     ```bash
-    npx @agentdeskai/browser-tools-mcp
+    npx @agentdeskai/browser-tools-mcp@1.0.11
     ```
 
     {" "}
@@ -246,6 +271,11 @@ Check out our [Quickstart Guide](/quickstart) to learn how to interact with your
 ## Troubleshooting
 
 <AccordionGroup>
+<Accordion title='Error: Screenshot tool is failing'>
+
+    Cursor and some other MCP clients may not always fetch the correct version of the MCP server. Make sure to use `npx @agentdeskai/browser-tools-mcp@1.0.11` instead to explicitly use the latest working version.
+
+  </Accordion>
 <Accordion title='Issue: Cannot see my screenshots'>
 
     Screenshots will be default be saved to your downloads folders within a `/mcp-screenshots` directory.
