@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "AgentDesk - BrowserToolsMCP",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -40,6 +40,11 @@
           "anchor": "Support",
           "href": "https://x.com/tedx_ai",
           "icon": "newspaper"
+        },
+        {
+          "anchor": "Top Secret Waitlist",
+          "href": "https://agentdesk.ai/",
+          "icon": "user-secret"
         }
       ]
     }
@@ -65,7 +70,7 @@
     "socials": {
       "x": "https://x.com/tedx_ai",
       "github": "https://github.com/AgentDeskAI/browser-tools-mcp",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://www.linkedin.com/in/ted-werbel-44b36b46/"
     }
   }
 }
