@@ -270,6 +270,27 @@ Check out our [Quickstart Guide](/quickstart) to learn how to interact with your
 
 ## Troubleshooting
 
+Sometimes things go wrong but we're here to help! Here are few common gotchas and steps you can take to get BrowserTools up and running:
+
+1. Check to see if you've installed the MCP server into Cursor correctly
+2. Make sure you're running the **@agentdeskai/browser-tools-server** command in a new terminal and that it says:
+   > `Aggregator listening on http://127.0.0.1:3025`
+3. Make sure you've installed the chrome extension and opened chrome dev tools in the tab you want to capture logs from
+4. If none of this works double-check the common gotchas below
+
+And if you're STILL stuck...
+
+1. Run this command in a new terminal to monitor the Cursor MCP logs:
+
+```bash
+tail -n 20 -F ~/Library/Application\ Support/Cursor/**/*MCP.log
+```
+
+2. Take a screenshot of those logs, a screenshot of the node server logs from browser-tools-server and if possible - go into the manage extensions window in chrome and click on an error button if present in the extension we installed earlier to capture a screenshot of that too
+3. Contact [@tedx_ai](https://x.com/tedx_ai) on X or add an issue to the [Github repo](https://github.com/AgentDeskAI/browser-tools-mcp) with all the requested details and we'll get back to as soon as possible!
+
+### Common Issues & Errors
+
 <AccordionGroup>
 <Accordion title='Error: Screenshot tool is failing'>
 
