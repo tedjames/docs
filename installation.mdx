@@ -13,16 +13,24 @@ With this MCP server tool, you can enable AI code editors and agents to have acc
 
 - Console logs and errors
 - XHR network requests/responses
-- Screenshot capabilities
+- Screenshot capabilities w/ optional auto-paste into Cursor
 - Currently selected DOM elements
+- Run SEO, Performance & Code Quality Scans via Lighthouse
+- Run a NextJS-specific SEO audit
+- Enter into "Debugger Mode" which uses many tools + prompts to fix bugs
+- Enter into "Audit Mode" to perform a comprehensive web app audit
 
 That way, you can simply tell Cursor or any AI code editor with MCP integrations:
+
+<Tip>"This isn't working... enter debugger mode!"</Tip>
+
+<Tip>"Can you edit the currently selected element to do x, y and z?"</Tip>
+
+<Tip>"I need to improve SEO and performance... enter audit mode"</Tip>
 
 <Tip>"Can you check console and network logs to see what went wrong?"</Tip>
 
 <Tip>"Something doesn't look right in the UI. Can you take a screenshot?"</Tip>
-
-<Tip>"Can you edit the currently selected element to do x, y and z?"</Tip>
 
 <Frame>
   <iframe
@@ -170,8 +178,54 @@ That way, you can simply tell Cursor or any AI code editor with MCP integrations
     > **3c.** Give it a unique name (browser-tools), set type to 'command' and set
     command to:
 
+    <CodeGroup>
+
+    ```bash MacOS
+    npx @agentdeskai/browser-tools-mcp@1.2.0
+    ```
+
+    ```bash Windows NPX
+    cmd /c npx -y @agentdeskai/browser-tools-mcp@1.2.0
+    ```
+
+    ```json Windows NPX via .cursor/mcp.json
+    {
+      "mcpServers": {
+        "browser-tools": {
+          "command": "wsl",
+          "args": [
+            "bash",
+            "-c",
+            "cmd /c npx -y @agentdeskai/browser-tools-mcp@1.2.0"
+          ],
+          "enabled": true
+        }
+      }
+    }
+    ```
+
+    ```json Windows NPX via .cursor/mcp.json (if path not set)
+    {
+      "mcpServers": {
+        "browser-tools": {
+          "command": "wsl",
+          "args": [
+            "bash",
+            "-c",
+            "'/home/[username]/.nvm/versions/node/v20.18.0/bin/npx @agentdeskai/browser-tools-mcp@1.2.0'"
+          ],
+          "enabled": true
+        }
+      }
+    }
+    ```
+
+    </CodeGroup>
+
+    If using NPX on Windows, use this command to find the path to NPX:
+
     ```bash
-    npx @agentdeskai/browser-tools-mcp@1.1.0
+    which npx
     ```
 
     {" "}
@@ -298,7 +352,7 @@ tail -n 20 -F ~/Library/Application\ Support/Cursor/**/*MCP.log
 <AccordionGroup>
 <Accordion title='Error: Screenshot tool is failing'>
 
-    Cursor and some other MCP clients may not always fetch the correct version of the MCP server. Make sure to use `npx @agentdeskai/browser-tools-mcp@1.1.0` instead to explicitly use the latest working version.
+    Cursor and some other MCP clients may not always fetch the correct version of the MCP server. Make sure to use `npx @agentdeskai/browser-tools-mcp@1.2.0` instead to explicitly use the latest working version.
 
   </Accordion>
 <Accordion title='Issue: Cannot see my screenshots'>
